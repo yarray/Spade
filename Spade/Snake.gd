@@ -4,7 +4,7 @@ export var board_x: int
 export var board_y: int
 signal died
 var init = Vector2(20, 12)
-var speed = 2
+var speed = 4
 var speed_acc = 0
 var direction = Vector2(1, 0)
 var head = Vector2(init.x, init.y)
@@ -53,6 +53,8 @@ func move():
 	head = (head + direction) 
 	head.x = (int(head.x) + board_x) % board_x
 	head.y = (int(head.y) + board_y) % board_y
+	if head in body:
+		emit_signal("died")
 	render()
 
 func input():

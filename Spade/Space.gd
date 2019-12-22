@@ -57,7 +57,7 @@ func spawn_at(v):
 
 func spawn_fake_food():
 	var v: Vector2
-	if randi() % 2 == 0 and not no_value(2):
+	if randi() % 5 == 0 and not no_value(2):
 		# spawn soil
 		v = rand_select_pos(funcref(self, "soil"))
 	else:
@@ -80,7 +80,7 @@ func eat(v):
 
 func init(outer_snake):
 	snake = outer_snake
-	spawn_at(Vector2(20, 4))
+	# spawn_at(Vector2(20, 4))
 	for i in range(3):
 		spawn_fake_food()
 

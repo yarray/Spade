@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/sky.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/soil.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/hole.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/fakefood.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/food.png" type="Texture" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Border" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Sky" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Soil" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Hole" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="FakeFood" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Food" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false

@@ -3,12 +3,12 @@ extends TileMap
 export var board_x: int
 export var board_y: int
 signal died
-var init = Vector2(20, 12)
+var init_pos = Vector2(20, 12)
 var speed = 4
 var speed_acc = 0
 var direction = Vector2(1, 0)
-var head = Vector2(init.x, init.y)
-var body = [Vector2(init.x - 1, init.y), Vector2(init.x - 2, init.y)]
+var head = Vector2(init_pos.x, init_pos.y)
+var body = [Vector2(init_pos.x - 1, init_pos.y), Vector2(init_pos.x - 2, init_pos.y)]
 var space: TileMap
 var digging = false
 var growing = false
@@ -58,14 +58,20 @@ func move():
 	render()
 
 func input():
-	if Input.is_action_just_pressed("ui_left") and direction != Vector2(1, 0):
-		direction = Vector2(-1, 0)
-	elif Input.is_action_just_pressed("ui_right") and direction != Vector2(-1, 0):
-		direction = Vector2(1, 0)
-	elif Input.is_action_just_pressed("ui_up") and direction != Vector2(0, 1):
-		direction = Vector2(0, -1)
-	elif Input.is_action_just_pressed("ui_down") and direction != Vector2(0, -1):
-		direction = Vector2(0, 1)
+	var d = Vector2(0, 0)
+	if Input.is_action_just_pressed("ui_left"):
+		d = Vector2(-1, 0)
+	elif Input.is_action_just_pressed("ui_right"):
+		d = Vector2(1, 0)
+	elif Input.is_action_just_pressed("ui_up"):
+		d = Vector2(0, -1)
+	elif Input.is_action_just_pressed("ui_down"):
+		d = Vector2(0, 1)
+	if d != Vector2(0, 0) and d + direction != Vector2(0, 0) and d - direction != Vector2(0, 0):
+		direction = d
+		move()
+		affect()
+		speed_acc = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
